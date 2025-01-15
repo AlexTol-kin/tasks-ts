@@ -6,16 +6,17 @@ interface Product {
 }
 
 const totalPrice = (product: Product) => {
-  product.price -= product.price * (product.discount / 100);
-  if (product.isInstallment === true) {
-    return product.price / product.months;
+  if (product.isInstallment === false) {
+    return product.price;
   }
+  product.price -= product.price * (product.discount / 100);
+  return product.price / product.months;
 };
 
 const price = totalPrice({
   price: 100000,
   discount: 25,
-  isInstallment: true,
+  isInstallment: false,
   months: 12,
 });
 
