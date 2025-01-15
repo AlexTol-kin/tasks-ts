@@ -7,7 +7,7 @@ interface Product {
 
 const totalPrice = (product: Product) => {
   product.price -= product.price * (product.discount / 100);
-  if (product.isInstallment) {
+  if (product.isInstallment === true) {
     return product.price / product.months;
   }
 };
